@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd2ehekoueh7l"]
+
+[ext_resource type="PackedScene" uid="uid://drg7lwf1b3n5k" path="res://Menus/menu_types/parallax_backdrop.tscn" id="1_gka5k"]
+[ext_resource type="Texture2D" uid="uid://b0kqk8lmwmucp" path="res://icon.svg" id="2_d2xbn"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="ParallaxBackdrop" parent="." instance=ExtResource("1_gka5k")]
+motion_scale = 10.57
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackdrop"]
+modulate = Color(0.953639, 0.426677, 0.492804, 1)
+position = Vector2(576, 320)
+scale = Vector2(5.25, 2.95312)
+texture = ExtResource("2_d2xbn")
+
+[node name="Midground" type="Sprite2D" parent="ParallaxBackdrop"]
+position = Vector2(448, 184)
+scale = Vector2(4.90625, 2.78125)
+texture = ExtResource("2_d2xbn")
+
+[node name="Foreground" type="Sprite2D" parent="ParallaxBackdrop"]
+modulate = Color(0.263358, 0.727868, 0.393099, 1)
+position = Vector2(456, 568)
+scale = Vector2(4.375, 2.44122)
+texture = ExtResource("2_d2xbn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 320)
+texture = ExtResource("2_d2xbn")
