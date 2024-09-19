@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dobtiytagaakp"]
+
+[ext_resource type="PackedScene" uid="uid://c1wqoi70n3v7y" path="res://Gameplay/personal_view/door.tscn" id="1_brjdb"]
+
+[node name="PersonalView" type="Node2D"]
+
+[node name="Door" parent="." instance=ExtResource("1_brjdb")]
