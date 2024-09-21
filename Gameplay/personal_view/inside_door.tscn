@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp6ycni80btnx"]
+
+[ext_resource type="Script" path="res://Gameplay/personal_view/inside_door.gd" id="1_00ign"]
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_mgrcg"]
+
+[node name="InsideDoor" type="Node2D"]
+script = ExtResource("1_00ign")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(574.25, 318.438)
+scale = Vector2(3.26367, 515.125)
+texture = SubResource("CurveXYZTexture_mgrcg")

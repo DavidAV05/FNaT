@@ -6,16 +6,17 @@
 
 [node name="PersonalView" type="Node2D"]
 script = ExtResource("1_e2nnq")
+LEFT_BORDER = null
+RIGHT_BORDER = null
+CAMERA_PAN_SPEED = null
 
 [node name="LeftDoor" parent="." node_paths=PackedStringArray("inside_door_scene") instance=ExtResource("1_brjdb")]
-inside_door_scene = NodePath("../Camera/InsideDoor")
+inside_door_scene = NodePath("../InsideDoor")
 
 [node name="RightDoor" parent="." instance=ExtResource("1_brjdb")]
 position = Vector2(1280, 0)
 
+[node name="InsideDoor" parent="." instance=ExtResource("2_udefs")]
+
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(576, 324)
-metadata/_edit_lock_ = true
-
-[node name="InsideDoor" parent="Camera" instance=ExtResource("2_udefs")]
-position = Vector2(-576, -324)

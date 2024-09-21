@@ -1,6 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1wqoi70n3v7y"]
+[gd_scene load_steps=5 format=3 uid="uid://c1wqoi70n3v7y"]
 
 [ext_resource type="Script" path="res://Gameplay/personal_view/door.gd" id="1_uhfa2"]
+
+[sub_resource type="Gradient" id="Gradient_5vmo3"]
+colors = PackedColorArray(0.691734, 0.322433, 0.140323, 1, 1, 1, 0.470588, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xlmpp"]
+gradient = SubResource("Gradient_5vmo3")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4438x"]
 size = Vector2(256, 512)
@@ -9,9 +15,14 @@ size = Vector2(256, 512)
 script = ExtResource("1_uhfa2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(128, 256)
+scale = Vector2(4, 8)
+texture = SubResource("GradientTexture2D_xlmpp")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(128, 256)
 shape = SubResource("RectangleShape2D_4438x")
+metadata/_edit_lock_ = true
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
