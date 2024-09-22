@@ -8,6 +8,5 @@
 script = ExtResource("1_00ign")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(574.25, 318.438)
-scale = Vector2(3.26367, 515.125)
+scale = Vector2(4.5, 648)
 texture = SubResource("CurveXYZTexture_mgrcg")

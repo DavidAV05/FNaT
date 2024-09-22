@@ -27,14 +27,23 @@ func _process(_delta: float) -> void:
 	# Define when camera pans
 	var border_thresh = visible_x_axis_len * (CAMERA_PAN_THRESH / 100)
 	
-	var cam_top_left_pos = CAM.position - (VIEWPORT.get_visible_rect().size / 2)
-	print(cam_top_left_pos)
+	var middle_of_screen = (VIEWPORT.get_visible_rect().size / 2)
+	var cam_top_left_pos = CAM.position - middle_of_screen
+	#print(cam_top_left_pos)
 	
 	var mouse_pos = VIEWPORT.get_mouse_position()
 	if mouse_pos[0] < border_thresh:
-		if cam_top_left_pos[0] > LEFT_BORDER:
+		# Check if after moving camera still right of LEFT_BORDER
+		if cam_top_left_pos[0] - CAMERA_PAN_SPEED > LEFT_BORDER:
 			CAM.position[0] -= CAMERA_PAN_SPEED
+		# If after moving left of border, set camera at border
+		elif cam_top_left_pos[0] > LEFT_BORDER:
+			CAM.position[0] = LEFT_BORDER + middle_of_screen[0]
 	
 	if mouse_pos[0] > visible_x_axis_len - border_thresh:
-		if cam_top_left_pos[0] + visible_x_axis_len < RIGHT_BORDER:
+		# Check if after moving camera still left of RIGHT_BORDER
+		if cam_top_left_pos[0] + visible_x_axis_len + CAMERA_PAN_SPEED < RIGHT_BORDER:
 			CAM.position[0] += CAMERA_PAN_SPEED
+		# If after moving right of border, set camera at border
+		elif cam_top_left_pos[0] + visible_x_axis_len < RIGHT_BORDER:
+			CAM.position[0] = RIGHT_BORDER - middle_of_screen[0]
