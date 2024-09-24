@@ -8,7 +8,6 @@
 script = ExtResource("1_a3xgv")
 
 [node name="ParallaxBackdrop" parent="." instance=ExtResource("1_gka5k")]
-motion_scale = 10.57
 
 [node name="Background" type="Sprite2D" parent="ParallaxBackdrop"]
 modulate = Color(0.953639, 0.426677, 0.492804, 1)

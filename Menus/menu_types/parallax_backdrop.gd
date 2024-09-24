@@ -1,6 +1,6 @@
 extends Node2D
 
-@export_range(0, 50) var motion_scale: float = 5
+@export_range(0, 50) var MOTION_SCALE := 5.0
 
 var backdrops: Array[Sprite2D] = []
 var initial_positions: Array[Vector2] = []
@@ -24,9 +24,9 @@ func _process(delta: float) -> void:
 
 	# Calculate the offset based on the current mouse position relative to the viewport center
 	var mouse_offset = get_global_mouse_position() - middle_of_screen
-	
+
 	for i in range(total_backdrops):
-		var current_scale: float = (motion_scale * (i + 1) * 2) / total_backdrops
+		var current_scale: float = (MOTION_SCALE * (i + 1)**2) / total_backdrops
 		if backdrops[i]:
 			# Calculate the new position for each backdrop based on the mouse offset and scale
 			backdrops[i].position = initial_positions[i] + (mouse_offset * current_scale * delta)
