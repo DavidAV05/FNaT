@@ -16,8 +16,7 @@ position = Vector2(576, 324)
 
 [node name="CameraView" parent="." instance=ExtResource("2_vofb5")]
 
-[node name="LivingRoom" parent="CameraView" node_paths=PackedStringArray("ACCESIBLE_ROOMS") instance=ExtResource("3_8ef6u")]
-ACCESIBLE_ROOMS = [NodePath("../HallWay")]
+[node name="LivingRoom" parent="CameraView" instance=ExtResource("3_8ef6u")]
 
 [node name="PlayerRoom" parent="CameraView" instance=ExtResource("4_i5fcr")]
 
