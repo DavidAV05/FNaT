@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtnrpd8hrswk4"]
+
+[ext_resource type="Script" path="res://Gameplay/rooms/base_rooms/room.gd" id="1_vm07p"]
+
+[node name="Room" type="Node2D"]
+script = ExtResource("1_vm07p")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(4.5, 648)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2rnw1w7um7os"]
+
+[ext_resource type="Script" path="res://Gameplay/rooms/base_rooms/player_room.gd" id="1_sxst3"]
+
+[node name="PlayerRoom" type="Node2D"]
+script = ExtResource("1_sxst3")
+
+[node name="Sprite" type="Sprite2D" parent="."]

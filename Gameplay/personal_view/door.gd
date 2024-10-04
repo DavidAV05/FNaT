@@ -10,13 +10,11 @@ func _ready() -> void:
 		print("Forgot to assign scene door '%s'" % self.name)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		inside_door_scene.show()
 		print("Clicked")
+	elif event is InputEventMouseButton and event.is_released():
+		print("Let go")
+		inside_door_scene.hide()
 	

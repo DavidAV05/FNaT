@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://ceku3ei4oohy8"]
+
+[ext_resource type="Script" path="res://Gameplay/level/level.gd" id="1_ndq4u"]
+[ext_resource type="PackedScene" uid="uid://o4ojj6gsdknm" path="res://Gameplay/camera_view/camera_view.tscn" id="2_vofb5"]
+[ext_resource type="PackedScene" uid="uid://dtnrpd8hrswk4" path="res://Gameplay/rooms/base_rooms/room.tscn" id="3_8ef6u"]
+[ext_resource type="PackedScene" uid="uid://b2rnw1w7um7os" path="res://Gameplay/rooms/base_rooms/player_room.tscn" id="4_i5fcr"]
+[ext_resource type="PackedScene" uid="uid://dd0qnqudcjh22" path="res://Gameplay/rooms/base_rooms/hall_way.tscn" id="5_pcsl7"]
+[ext_resource type="PackedScene" uid="uid://dhu8pndk3l0vx" path="res://Gameplay/rooms/physical_rooms/Rooms.tscn" id="6_5mc71"]
+
+[node name="Level1" type="Node2D" node_paths=PackedStringArray("camera_view")]
+script = ExtResource("1_ndq4u")
+camera_view = NodePath("CameraView")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="CameraView" parent="." instance=ExtResource("2_vofb5")]
+
+[node name="LivingRoom" parent="CameraView" node_paths=PackedStringArray("ACCESIBLE_ROOMS") instance=ExtResource("3_8ef6u")]
+ACCESIBLE_ROOMS = [NodePath("../HallWay")]
+
+[node name="PlayerRoom" parent="CameraView" instance=ExtResource("4_i5fcr")]
+
+[node name="HallWay" parent="CameraView" instance=ExtResource("5_pcsl7")]
+
+[node name="Rooms" parent="." instance=ExtResource("6_5mc71")]

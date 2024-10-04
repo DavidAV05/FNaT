@@ -1,16 +1,28 @@
-[gd_scene format=3 uid="uid://o4ojj6gsdknm"]
+[gd_scene load_steps=2 format=3 uid="uid://o4ojj6gsdknm"]
 
-[node name="CameraView" type="Node2D"]
-visible = false
+[ext_resource type="Script" path="res://Gameplay/camera_view/camera_view.gd" id="1_ekh1y"]
 
-[node name="Button" type="Button" parent="."]
-offset_left = 728.0
-offset_top = 360.0
-offset_right = 808.0
-offset_bottom = 408.0
+[node name="CameraView" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ekh1y")
 
-[node name="Button2" type="Button" parent="."]
-offset_left = 728.0
-offset_top = 488.0
-offset_right = 808.0
-offset_bottom = 536.0
+[node name="Cam1" type="Button" parent="."]
+z_index = 5
+layout_mode = 0
+offset_left = 1024.0
+offset_top = 480.0
+offset_right = 1151.0
+offset_bottom = 511.0
+text = "Cam2"
+
+[node name="Cam2" type="Button" parent="."]
+z_index = 5
+layout_mode = 0
+offset_left = 832.0
+offset_top = 480.0
+offset_right = 960.0
+offset_bottom = 512.0
+text = "Cam1"
+
+[connection signal="pressed" from="Cam1" to="." method="_on_cam_butten_press"]

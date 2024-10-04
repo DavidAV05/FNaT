@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bo6hg4fklr4jo"]
 
-[ext_resource type="Script" path="res://Gameplay/plushies/plushy.gd" id="1_s5nq0"]
+[ext_resource type="Script" path="res://Gameplay/plushies/class/plushy.gd" id="1_s5nq0"]
 
 [node name="Plushy" type="Node2D"]
 script = ExtResource("1_s5nq0")
@@ -8,5 +8,7 @@ script = ExtResource("1_s5nq0")
 [node name="ActionTimer" type="Timer" parent="."]
 wait_time = 4096.0
 one_shot = true
+
+[node name="Sprites" type="AnimatedSprite2D" parent="."]
 
 [connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]

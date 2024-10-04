@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhu8pndk3l0vx"]
+
+[ext_resource type="Script" path="res://Gameplay/rooms/base_rooms/room.gd" id="1_thvwe"]
+[ext_resource type="Script" path="res://Gameplay/rooms/physical_rooms/rooms.gd" id="1_yeuup"]
+[ext_resource type="Script" path="res://Gameplay/rooms/base_rooms/hall_way.gd" id="2_3o67i"]
+[ext_resource type="Script" path="res://Gameplay/rooms/base_rooms/player_room.gd" id="3_ysda4"]
+
+[node name="Rooms" type="Node2D"]
+script = ExtResource("1_yeuup")
+
+[node name="LivingRoom" type="Node2D" parent="." node_paths=PackedStringArray("ACCESIBLE_ROOMS")]
+script = ExtResource("1_thvwe")
+ACCESIBLE_ROOMS = [NodePath("../LeftHallway")]
+
+[node name="LeftHallway" type="Node2D" parent="." node_paths=PackedStringArray("ACCESIBLE_ROOMS")]
+script = ExtResource("2_3o67i")
+ACCESIBLE_ROOMS = [NodePath("../PlayerRoom"), NodePath("../LivingRoom")]
+
+[node name="PlayerRoom" type="Node2D" parent="." node_paths=PackedStringArray("ACCESIBLE_ROOMS")]
+script = ExtResource("3_ysda4")
+ACCESIBLE_ROOMS = [NodePath("../LeftHallway")]
