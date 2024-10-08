@@ -22,3 +22,16 @@ SignalBus="*res://autoloads/signal_bus.gd"
 [display]
 
 window/stretch/mode="viewport"
+
+[file_customization]
+
+folder_colors={
+"res://Gameplay/": "orange",
+"res://Gameplay/camera_view/": "orange",
+"res://Gameplay/level/": "orange",
+"res://Gameplay/personal_view/": "orange",
+"res://Gameplay/plushies/": "blue",
+"res://Gameplay/rooms/": "teal",
+"res://Menus/": "red",
+"res://autoloads/": "green"
+}

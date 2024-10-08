@@ -10,7 +10,7 @@ signal player_left
 
 # Initialises the PLAYER_ROOM, which is the room with the player
 func _ready() -> void:
-	for room in ACCESIBLE_ROOMS:
+	for room in accesible_rooms:
 		if room is PlayerRoom:
 			assert(PLAYER_ROOM == null)
 			PLAYER_ROOM = room

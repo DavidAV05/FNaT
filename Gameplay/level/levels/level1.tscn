@@ -1,25 +1,49 @@
-[gd_scene load_steps=7 format=3 uid="uid://ceku3ei4oohy8"]
+[gd_scene load_steps=10 format=3 uid="uid://ceku3ei4oohy8"]
 
 [ext_resource type="Script" path="res://Gameplay/level/level.gd" id="1_ndq4u"]
+[ext_resource type="PackedScene" uid="uid://vgh23w552f1k" path="res://Gameplay/rooms/rooms_control/rooms.tscn" id="2_542b3"]
 [ext_resource type="PackedScene" uid="uid://o4ojj6gsdknm" path="res://Gameplay/camera_view/camera_view.tscn" id="2_vofb5"]
-[ext_resource type="PackedScene" uid="uid://dtnrpd8hrswk4" path="res://Gameplay/rooms/base_rooms/room.tscn" id="3_8ef6u"]
-[ext_resource type="PackedScene" uid="uid://b2rnw1w7um7os" path="res://Gameplay/rooms/base_rooms/player_room.tscn" id="4_i5fcr"]
-[ext_resource type="PackedScene" uid="uid://dd0qnqudcjh22" path="res://Gameplay/rooms/base_rooms/hall_way.tscn" id="5_pcsl7"]
-[ext_resource type="PackedScene" uid="uid://dhu8pndk3l0vx" path="res://Gameplay/rooms/physical_rooms/Rooms.tscn" id="6_5mc71"]
+[ext_resource type="PackedScene" uid="uid://dldw61hdkvkbc" path="res://Gameplay/plushies/physical_plushies/konijntje.tscn" id="4_lvduf"]
+[ext_resource type="PackedScene" uid="uid://bsmoq6qg5p44n" path="res://Gameplay/rooms/physical_rooms/east_hallway.tscn" id="5_2qtrd"]
+[ext_resource type="PackedScene" uid="uid://q15jgoxbqxsl" path="res://Gameplay/rooms/physical_rooms/bed_room.tscn" id="6_2ew1s"]
+[ext_resource type="PackedScene" uid="uid://oek7k54po2fi" path="res://Gameplay/rooms/physical_rooms/living_room.tscn" id="6_uf0k6"]
+[ext_resource type="PackedScene" uid="uid://cw55rl8xj2ijc" path="res://Gameplay/level/game_over.tscn" id="8_wtrxu"]
+[ext_resource type="PackedScene" uid="uid://dobtiytagaakp" path="res://Gameplay/personal_view/personal_view.tscn" id="8_xxlsm"]
 
 [node name="Level1" type="Node2D" node_paths=PackedStringArray("camera_view")]
 script = ExtResource("1_ndq4u")
-camera_view = NodePath("CameraView")
+camera_view = NodePath("Camera2D/CameraView")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 
-[node name="CameraView" parent="." instance=ExtResource("2_vofb5")]
+[node name="CameraView" parent="Camera2D" instance=ExtResource("2_vofb5")]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
 
-[node name="LivingRoom" parent="CameraView" instance=ExtResource("3_8ef6u")]
+[node name="Rooms" parent="Camera2D/CameraView" instance=ExtResource("2_542b3")]
 
-[node name="PlayerRoom" parent="CameraView" instance=ExtResource("4_i5fcr")]
+[node name="LivingRoom" parent="Camera2D/CameraView/Rooms" node_paths=PackedStringArray("accesible_rooms") instance=ExtResource("6_uf0k6")]
+accesible_rooms = [NodePath("../EastHallway")]
 
-[node name="HallWay" parent="CameraView" instance=ExtResource("5_pcsl7")]
+[node name="EastHallway" parent="Camera2D/CameraView/Rooms" node_paths=PackedStringArray("accesible_rooms") instance=ExtResource("5_2qtrd")]
+accesible_rooms = [NodePath("../BedRoom")]
 
-[node name="Rooms" parent="." instance=ExtResource("6_5mc71")]
+[node name="BedRoom" parent="Camera2D/CameraView/Rooms" node_paths=PackedStringArray("accesible_rooms") instance=ExtResource("6_2ew1s")]
+accesible_rooms = [NodePath("../EastHallway")]
+
+[node name="Plushies" type="Node" parent="Camera2D"]
+
+[node name="Konijntje" parent="Camera2D/Plushies" node_paths=PackedStringArray("starting_room") instance=ExtResource("4_lvduf")]
+starting_room = NodePath("../../CameraView/Rooms/LivingRoom")
+
+[node name="GameOver" parent="Camera2D" instance=ExtResource("8_wtrxu")]
+z_index = 20
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+
+[node name="PersonalView" parent="." instance=ExtResource("8_xxlsm")]

@@ -1,28 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://o4ojj6gsdknm"]
+[gd_scene load_steps=3 format=3 uid="uid://o4ojj6gsdknm"]
 
 [ext_resource type="Script" path="res://Gameplay/camera_view/camera_view.gd" id="1_ekh1y"]
+[ext_resource type="PackedScene" uid="uid://cylefqxcr7gh0" path="res://Gameplay/camera_view/cam_button.tscn" id="2_yl3r1"]
 
 [node name="CameraView" type="Control"]
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ekh1y")
+starting_room_name = "LivingRoom"
 
-[node name="Cam1" type="Button" parent="."]
-z_index = 5
-layout_mode = 0
-offset_left = 1024.0
-offset_top = 480.0
-offset_right = 1151.0
-offset_bottom = 511.0
-text = "Cam2"
-
-[node name="Cam2" type="Button" parent="."]
-z_index = 5
-layout_mode = 0
-offset_left = 832.0
-offset_top = 480.0
-offset_right = 960.0
-offset_bottom = 512.0
+[node name="Cam1" parent="." instance=ExtResource("2_yl3r1")]
+layout_mode = 1
+offset_left = 640.0
+offset_top = 512.0
+offset_right = 832.0
+offset_bottom = 576.0
 text = "Cam1"
+connected_room_name = "BedRoom"
 
-[connection signal="pressed" from="Cam1" to="." method="_on_cam_butten_press"]
+[node name="Cam2" parent="." instance=ExtResource("2_yl3r1")]
+layout_mode = 1
+offset_left = 896.0
+offset_top = 512.0
+offset_right = 1088.0
+offset_bottom = 576.0
+text = "Cam2"
+connected_room_name = "LivingRoom"

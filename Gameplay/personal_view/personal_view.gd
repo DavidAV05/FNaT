@@ -29,7 +29,7 @@ func _handle_cam_pan() -> void:
 	var middle_of_screen = (VIEWPORT.get_visible_rect().size / 2)
 	var cam_top_left_pos = CAM.position - middle_of_screen
 	#print(cam_top_left_pos)
-	
+
 	var mouse_pos = VIEWPORT.get_mouse_position()
 	if mouse_pos[0] < border_thresh:
 		# Check if after moving camera still right of LEFT_BORDER

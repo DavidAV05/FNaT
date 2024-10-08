@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://q15jgoxbqxsl"]
+
+[ext_resource type="Script" path="res://Gameplay/rooms/base_rooms/player_room.gd" id="1_r6mjf"]
+[ext_resource type="Texture2D" uid="uid://crleb38a8tavd" path="res://Gameplay/rooms/room_textures/camera_room.jpg" id="2_mmv8g"]
+
+[node name="BedRoom" type="Node2D"]
+script = ExtResource("1_r6mjf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(1.88235, 1.58824)
+texture = ExtResource("2_mmv8g")
