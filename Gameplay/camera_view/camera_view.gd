@@ -41,7 +41,6 @@ func _hide_view() -> void:
 	self.hide()
 
 func _on_cam_button_pressed(room_name: String) -> void:
-	print("I clicked %s hihi" % room_name)
 	SignalBus.emit_signal("show_room", room_name)
 	
 	last_viewed_room_name = room_name

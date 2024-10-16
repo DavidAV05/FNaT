@@ -29,7 +29,7 @@ offset_bottom = -324.0
 accesible_rooms = [NodePath("../EastHallway")]
 
 [node name="EastHallway" parent="Camera2D/CameraView/Rooms" node_paths=PackedStringArray("accesible_rooms") instance=ExtResource("5_2qtrd")]
-accesible_rooms = [NodePath("../BedRoom")]
+accesible_rooms = [NodePath("../LivingRoom")]
 
 [node name="BedRoom" parent="Camera2D/CameraView/Rooms" node_paths=PackedStringArray("accesible_rooms") instance=ExtResource("6_2ew1s")]
 accesible_rooms = [NodePath("../EastHallway")]

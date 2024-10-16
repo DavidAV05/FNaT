@@ -1,12 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://dldw61hdkvkbc"]
+[gd_scene load_steps=3 format=3 uid="uid://dldw61hdkvkbc"]
 
 [ext_resource type="Script" path="res://Gameplay/plushies/plushy/plushy.gd" id="1_8t5ol"]
+[ext_resource type="Texture2D" uid="uid://b0kqk8lmwmucp" path="res://icon.svg" id="2_nr7gb"]
 
 [node name="Konijntje" type="Node2D"]
+z_index = 15
 script = ExtResource("1_8t5ol")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
 [node name="ActionTimer" type="Timer" parent="."]
+
+[node name="Sprite0" type="Sprite2D" parent="."]
+modulate = Color(0.396078, 1, 1, 1)
+position = Vector2(608, 352)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_nr7gb")
+
+[node name="Sprite1" type="Sprite2D" parent="."]
+modulate = Color(0.659416, 0.687429, 7.70092e-07, 1)
+position = Vector2(252, 352)
+scale = Vector2(2.0625, 2.5)
+texture = ExtResource("2_nr7gb")
+
+[node name="Sprite2" type="Sprite2D" parent="."]
+modulate = Color(1, 0.39, 0.39, 1)
+position = Vector2(964, 352)
+scale = Vector2(2.0625, 2.5)
+texture = ExtResource("2_nr7gb")
 
 [connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]

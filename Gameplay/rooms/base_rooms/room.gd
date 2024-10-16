@@ -4,7 +4,8 @@ extends Node2D
 @export_group("Bookkeeping")
 @export var room_id: int = -1
 @export var accesible_rooms: Array[Room] = []
-var pluhsies_inside: Array[Plushy] = []
+var plushies_inside: Array[Plushy] = []
+var being_shown = false
 
 # Sprite
 @onready var sprite: Sprite2D = $Sprite2D
@@ -20,24 +21,37 @@ func _ready() -> void:
 	plushy_left.connect(_plushy_left)
 
 func _plushy_entered(new_plushy: Plushy):
-	pluhsies_inside.append(new_plushy)
+	# Add to bookkeeping
+	plushies_inside.append(new_plushy)
+	
+	# Shows the plushy when entering if room is being shown
+	if being_shown:
+		new_plushy.update_sprite_on_room_id(room_id)
 	print("%s has %s in it now" % [self.name, new_plushy.name])
 
+
+# Handles plushy leaving the room
 func _plushy_left(leaving_plushy: Plushy):
-	pluhsies_inside.erase(leaving_plushy)
+	# Erase from bookkeeping
+	plushies_inside.erase(leaving_plushy)
+	
+	# Hides the plushy when leaving
+	leaving_plushy.hide_all_sprites()
 	print("%s has lost %s" % [self.name, leaving_plushy.name])
 
 
 # Handle room appereance when camera of room is selected
 func show_room():
-	for plushy in pluhsies_inside:
-		plushy.show()
+	for plushy in plushies_inside:
+		plushy.update_sprite_on_room_id(room_id)
 
+	being_shown = true
 	self.show()
 
 # Handle room disappereance when camera of room is deselected
 func hide_room():
-	for plushy in pluhsies_inside:
-		plushy.hide()
+	for plushy in plushies_inside:
+		plushy.hide_all_sprites()
 
+	being_shown = false
 	self.hide()

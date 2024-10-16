@@ -10,20 +10,29 @@ anchors_preset = 0
 script = ExtResource("1_ekh1y")
 starting_room_name = "LivingRoom"
 
+[node name="Cam0" parent="." instance=ExtResource("2_yl3r1")]
+layout_mode = 1
+offset_left = 768.0
+offset_top = 512.0
+offset_right = 960.0
+offset_bottom = 576.0
+text = "bed room"
+connected_room_name = "BedRoom"
+
 [node name="Cam1" parent="." instance=ExtResource("2_yl3r1")]
 layout_mode = 1
-offset_left = 640.0
+offset_left = 512.0
 offset_top = 512.0
-offset_right = 832.0
+offset_right = 704.0
 offset_bottom = 576.0
-text = "Cam1"
-connected_room_name = "BedRoom"
+text = "hallway"
+connected_room_name = "EastHallway"
 
 [node name="Cam2" parent="." instance=ExtResource("2_yl3r1")]
 layout_mode = 1
-offset_left = 896.0
-offset_top = 512.0
-offset_right = 1088.0
-offset_bottom = 576.0
-text = "Cam2"
+offset_left = 512.0
+offset_top = 384.0
+offset_right = 704.0
+offset_bottom = 448.0
+text = "living room"
 connected_room_name = "LivingRoom"

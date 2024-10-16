@@ -28,7 +28,7 @@ window/stretch/mode="viewport"
 folder_colors={
 "res://Gameplay/": "orange",
 "res://Gameplay/camera_view/": "orange",
-"res://Gameplay/level/": "orange",
+"res://Gameplay/level/": "green",
 "res://Gameplay/personal_view/": "orange",
 "res://Gameplay/plushies/": "blue",
 "res://Gameplay/rooms/": "teal",
