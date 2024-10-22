@@ -29,4 +29,4 @@ func _show_room_on_name(room_name: String) -> void:
 # Hide all rooms
 func _hide_all_rooms() -> void:
 	for room in rooms:
-		room.hide()
+		room.hide_room()

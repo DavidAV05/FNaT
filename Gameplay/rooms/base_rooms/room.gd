@@ -19,6 +19,9 @@ func _ready() -> void:
 	
 	plushy_entered.connect(_plushy_entered)
 	plushy_left.connect(_plushy_left)
+	
+	# When cams get hidden, hide room
+	SignalBus.connect("hide_cams", hide_room)
 
 func _plushy_entered(new_plushy: Plushy):
 	# Add to bookkeeping

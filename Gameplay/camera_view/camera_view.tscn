@@ -1,38 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://o4ojj6gsdknm"]
+[gd_scene load_steps=6 format=3 uid="uid://o4ojj6gsdknm"]
 
 [ext_resource type="Script" path="res://Gameplay/camera_view/camera_view.gd" id="1_ekh1y"]
+[ext_resource type="Shader" path="res://resources/shaders/vhs.gdshader" id="2_4ac6j"]
 [ext_resource type="PackedScene" uid="uid://cylefqxcr7gh0" path="res://Gameplay/camera_view/cam_button.tscn" id="2_yl3r1"]
 
-[node name="CameraView" type="Control"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0cryk"]
+shader = ExtResource("2_4ac6j")
+shader_parameter/wiggle = 0.03
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 1.0
+shader_parameter/blur_samples = 15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_heus2"]
+shader = ExtResource("2_4ac6j")
+shader_parameter/wiggle = 0.03
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 1.0
+shader_parameter/blur_samples = 15
+
+[node name="CameraView" type="Control" node_paths=PackedStringArray("canvas_layer")]
 z_index = 10
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ekh1y")
 starting_room_name = "LivingRoom"
+canvas_layer = NodePath("CanvasLayer")
 
-[node name="Cam0" parent="." instance=ExtResource("2_yl3r1")]
-layout_mode = 1
-offset_left = 768.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_0cryk")
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Cam0" parent="CanvasLayer" instance=ExtResource("2_yl3r1")]
+offset_left = 960.0
 offset_top = 512.0
-offset_right = 960.0
-offset_bottom = 576.0
+offset_right = -64.0
+offset_bottom = -72.0
 text = "bed room"
 connected_room_name = "BedRoom"
 
-[node name="Cam1" parent="." instance=ExtResource("2_yl3r1")]
-layout_mode = 1
-offset_left = 512.0
+[node name="Cam1" parent="CanvasLayer" instance=ExtResource("2_yl3r1")]
+offset_left = 768.0
 offset_top = 512.0
-offset_right = 704.0
-offset_bottom = 576.0
+offset_right = -256.0
+offset_bottom = -72.0
 text = "hallway"
 connected_room_name = "EastHallway"
 
-[node name="Cam2" parent="." instance=ExtResource("2_yl3r1")]
-layout_mode = 1
-offset_left = 512.0
+[node name="Cam2" parent="CanvasLayer" instance=ExtResource("2_yl3r1")]
+offset_left = 768.0
 offset_top = 384.0
-offset_right = 704.0
-offset_bottom = 448.0
+offset_right = -256.0
+offset_bottom = -200.0
 text = "living room"
 connected_room_name = "LivingRoom"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+z_index = 20
+material = SubResource("ShaderMaterial_heus2")
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0

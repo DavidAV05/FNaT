@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://bd2ehekoueh7l"]
+
+[ext_resource type="Script" path="res://menus/main_menu/main_menu.gd" id="1_mdiil"]
+[ext_resource type="PackedScene" uid="uid://drg7lwf1b3n5k" path="res://menus/menu_build_blocks/parallax_backdrop.tscn" id="2_r3nba"]
+[ext_resource type="Shader" path="res://resources/shaders/pixel_fade.gdshader" id="3_5w3vh"]
+[ext_resource type="Texture2D" uid="uid://c8xmqgj2bt7mg" path="res://menus/main_menu/konijntje_main.png" id="4_bje3f"]
+[ext_resource type="Texture2D" uid="uid://e131g0ahg5ou" path="res://menus/main_menu/menu_dust.png" id="4_yslat"]
+[ext_resource type="Script" path="res://menus/main_menu/midground.gd" id="5_wqwt4"]
+[ext_resource type="Shader" path="res://resources/shaders/scrolling.gdshader" id="6_sq78q"]
+[ext_resource type="PackedScene" uid="uid://bwbswkjx3rvse" path="res://menus/menu_build_blocks/bunny_theme/bunny_theme.tscn" id="8_nsgfw"]
+
+[sub_resource type="Gradient" id="Gradient_ym2uj"]
+offsets = PackedFloat32Array(0, 0.671053, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.2652, 0.305093, 0.34, 1, 0.102, 0.1059, 0.12, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_546we"]
+gradient = SubResource("Gradient_ym2uj")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_484rc"]
+shader = ExtResource("3_5w3vh")
+shader_parameter/fade = 0
+shader_parameter/tiling = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t6ivr"]
+shader = ExtResource("6_sq78q")
+shader_parameter/scroll_speed = 0.05
+shader_parameter/angle_degrees = 45.0
+shader_parameter/repeat_x = 1.0
+shader_parameter/repeat_y = 1.0
+shader_parameter/row_offset = 1.0
+shader_parameter/texture_to_scroll = ExtResource("4_yslat")
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_mdiil")
+
+[node name="ParallaxBackdrop" parent="." instance=ExtResource("2_r3nba")]
+MOTION_SCALE = 3.0
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackdrop"]
+position = Vector2(576, 320)
+scale = Vector2(20, 12)
+texture = SubResource("GradientTexture2D_546we")
+
+[node name="Midground" type="Sprite2D" parent="ParallaxBackdrop"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_484rc")
+position = Vector2(768, 384)
+scale = Vector2(2.88111, 2.88111)
+texture = ExtResource("4_bje3f")
+script = ExtResource("5_wqwt4")
+
+[node name="Foreground" type="Sprite2D" parent="ParallaxBackdrop"]
+modulate = Color(0.607843, 0.509804, 0.498039, 1)
+z_index = 1
+material = SubResource("ShaderMaterial_t6ivr")
+position = Vector2(576, 324)
+scale = Vector2(2.88, 2.88)
+texture = ExtResource("4_yslat")
+
+[node name="Dust" type="TextureRect" parent="ParallaxBackdrop"]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("4_yslat")
+stretch_mode = 6
+
+[node name="BunnyTheme" parent="." instance=ExtResource("8_nsgfw")]
+
+[node name="Start" type="Button" parent="BunnyTheme"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 104.0
+offset_right = 384.0
+offset_bottom = 232.0
+text = "Start Game"
+
+[node name="Quit" type="Button" parent="BunnyTheme"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 360.0
+offset_right = 384.0
+offset_bottom = 488.0
+text = "Quit"
+
+[connection signal="pressed" from="BunnyTheme/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="BunnyTheme/Quit" to="." method="_on_quit_pressed"]

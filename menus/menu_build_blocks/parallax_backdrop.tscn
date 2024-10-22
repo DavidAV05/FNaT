@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://drg7lwf1b3n5k"]
 
-[ext_resource type="Script" path="res://Menus/menu_types/parallax_backdrop.gd" id="1_ibbti"]
+[ext_resource type="Script" path="res://menus/menu_build_blocks/parallax_backdrop.gd" id="1_ibbti"]
 
 [node name="ParallaxBackdrop" type="Node2D"]
 script = ExtResource("1_ibbti")
