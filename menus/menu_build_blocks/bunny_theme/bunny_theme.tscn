@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwbswkjx3rvse"]
+[gd_scene load_steps=3 format=3 uid="uid://bwbswkjx3rvse"]
 
 [ext_resource type="Theme" uid="uid://d01igxjhpvsiw" path="res://resources/themes/bunny_theme.tres" id="1_acew5"]
+[ext_resource type="Script" path="res://menus/menu_build_blocks/bunny_theme/bunny_theme.gd" id="2_2ww03"]
 
 [node name="BunnyTheme" type="Control"]
 texture_filter = 1
@@ -9,5 +10,7 @@ anchors_preset = 0
 offset_right = 64.0
 offset_bottom = 24.0
 theme = ExtResource("1_acew5")
+script = ExtResource("2_2ww03")
+tween_intensity = 1.05
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]

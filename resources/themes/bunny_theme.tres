@@ -10,6 +10,7 @@ default_font_size = 44
 Button/colors/font_color = Color(0.945098, 0.92549, 0.92549, 1)
 Button/colors/font_hover_color = Color(0.443137, 0.34902, 0.34902, 1)
 Button/fonts/font = ExtResource("1_fjrrh")
+Button/styles/focus = ExtResource("1_q1xbj")
 Button/styles/hover = ExtResource("1_q1xbj")
 Button/styles/normal = ExtResource("2_rmrfb")
 Button/styles/pressed = ExtResource("1_q1xbj")

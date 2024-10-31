@@ -1,7 +1,6 @@
 extends Sprite2D
 
 @onready var shader_material: ShaderMaterial = self.material
-var timer: Timer = null
 
 var timeout_time: float = 0.1
 

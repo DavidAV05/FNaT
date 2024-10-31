@@ -15,13 +15,12 @@ signal plushy_left
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("I am loaded %s" % self.name)
 	assert(sprite != null)
 	
 	plushy_entered.connect(_plushy_entered)
 	plushy_left.connect(_plushy_left)
-	
-	# When cams get hidden, hide room
-	SignalBus.connect("hide_cams", hide_room)
+
 
 func _plushy_entered(new_plushy: Plushy):
 	# Add to bookkeeping
@@ -45,6 +44,7 @@ func _plushy_left(leaving_plushy: Plushy):
 
 # Handle room appereance when camera of room is selected
 func show_room():
+	print("Showing room %s" % self.name)
 	for plushy in plushies_inside:
 		plushy.update_sprite_on_room_id(room_id)
 
@@ -53,6 +53,7 @@ func show_room():
 
 # Handle room disappereance when camera of room is deselected
 func hide_room():
+	print("Hiding room %s" % self.name)
 	for plushy in plushies_inside:
 		plushy.hide_all_sprites()
 

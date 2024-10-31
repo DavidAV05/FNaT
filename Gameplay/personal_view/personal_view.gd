@@ -6,7 +6,7 @@ extends Node2D
 @export_range(0, 50) var CAMERA_PAN_THRESH := 10.0
 @export_range(0, 50) var CAMERA_VIEW_THRESH := 10.0
 
-@onready var CAM: Camera2D = $Camera
+@export var CAM: Camera2D = null
 @onready var VIEWPORT: Viewport = null
 
 # Called when the node enters the scene tree for the first time.

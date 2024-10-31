@@ -1,39 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dobtiytagaakp"]
+[gd_scene load_steps=2 format=3 uid="uid://dobtiytagaakp"]
 
-[ext_resource type="PackedScene" uid="uid://c1wqoi70n3v7y" path="res://Gameplay/personal_view/door.tscn" id="1_brjdb"]
 [ext_resource type="Script" path="res://Gameplay/personal_view/personal_view.gd" id="1_e2nnq"]
-[ext_resource type="PackedScene" uid="uid://cp6ycni80btnx" path="res://Gameplay/personal_view/inside_door.tscn" id="2_udefs"]
-
-[sub_resource type="Gradient" id="Gradient_m3p8a"]
-colors = PackedColorArray(0.0152242, 0.449351, 0.396758, 1, 0.638961, 0.104168, 0.544217, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_pm5bj"]
-gradient = SubResource("Gradient_m3p8a")
-
-[sub_resource type="Gradient" id="Gradient_5eepv"]
-colors = PackedColorArray(0.0415885, 0.361069, 0.941194, 1, 0.36571, 0.605475, 0.283936, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_s7p05"]
-gradient = SubResource("Gradient_5eepv")
 
 [node name="PersonalView" type="Node2D"]
 script = ExtResource("1_e2nnq")
-
-[node name="LeftDoor" parent="." node_paths=PackedStringArray("inside_door_scene") instance=ExtResource("1_brjdb")]
-inside_door_scene = NodePath("../Camera/InsideLeftDoor")
-
-[node name="RightDoor" parent="." node_paths=PackedStringArray("inside_door_scene") instance=ExtResource("1_brjdb")]
-position = Vector2(1280, 0)
-inside_door_scene = NodePath("../Camera/InsideRightDoor")
-
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2(576, 324)
-metadata/_edit_lock_ = true
-
-[node name="InsideLeftDoor" parent="Camera" instance=ExtResource("2_udefs")]
-visible = false
-SPRITE_TEXTURE = SubResource("GradientTexture1D_pm5bj")
-
-[node name="InsideRightDoor" parent="Camera" instance=ExtResource("2_udefs")]
-visible = false
-SPRITE_TEXTURE = SubResource("GradientTexture1D_s7p05")

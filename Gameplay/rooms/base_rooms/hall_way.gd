@@ -1,29 +1,30 @@
 class_name Hallway
 extends Room
 
-@export var DOOR: Node = null
+var player_room: PlayerRoom = null
 
-var PLAYER_ROOM: PlayerRoom = null
+var player_inside = false
 
-signal player_entered
-signal player_left
 
-## Initialises the PLAYER_ROOM, which is the room with the player
-#func _ready() -> void:
-	#for room in accesible_rooms:
-		#if room is PlayerRoom:
-			#assert(PLAYER_ROOM == null)
-			#PLAYER_ROOM = room
-	#
-	#player_entered.connect(_on_player_entering)
-	#player_left.connect(_on_player_leaving)
+# Called when node gets loaded
+func _ready() -> void:
+	super()
+	
+	SignalBus.connect("player_entering", _on_player_entering)
+	SignalBus.connect("player_leaving", _on_player_leaving)
 
 
 # Handles player entering
-func _on_player_entering():
-	pass
+func _on_player_entering(room_name: String):
+	if room_name != self.name:
+		return
+
+	self.show_room()
 
 
 # Handles door closing
-func _on_player_leaving():
-	pass
+func _on_player_leaving(room_name: String):
+	if room_name != self.name:
+		return
+
+	self.hide_room()

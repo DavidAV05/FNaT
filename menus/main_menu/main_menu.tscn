@@ -59,7 +59,6 @@ scale = Vector2(2.88, 2.88)
 texture = ExtResource("4_yslat")
 
 [node name="Dust" type="TextureRect" parent="ParallaxBackdrop"]
-visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("4_yslat")
