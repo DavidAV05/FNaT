@@ -8,5 +8,5 @@ func _ready() -> void:
 
 
 func _plushy_entered(new_plushy: Plushy):
-	print("Dood lol\n\n")
+	print("Dood lol door %s\n\n" % new_plushy)
 	SignalBus.emit_signal("game_over")

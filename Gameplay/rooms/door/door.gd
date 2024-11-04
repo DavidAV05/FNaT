@@ -11,9 +11,8 @@ extends Node2D
 
 var inside_door = false
 
-
 # Gets called every frame? I think?
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_released("general_click") and inside_door:
 		inside_door = false
 		SignalBus.emit_signal("player_leaving", connected_room_name)

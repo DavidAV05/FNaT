@@ -9,8 +9,8 @@ extends Control
 var last_viewed_room_name: String = ""
 
 # Used externally
-var VIEW_OPENED := false
-var JUST_OPENED := false
+var view_opened := false
+var just_opened := false
 
 # Create signal for when cam button pressed
 signal cam_button_pressed(button_name: String) 

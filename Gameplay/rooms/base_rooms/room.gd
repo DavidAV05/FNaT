@@ -44,7 +44,6 @@ func _plushy_left(leaving_plushy: Plushy):
 
 # Handle room appereance when camera of room is selected
 func show_room():
-	print("Showing room %s" % self.name)
 	for plushy in plushies_inside:
 		plushy.update_sprite_on_room_id(room_id)
 
@@ -53,7 +52,6 @@ func show_room():
 
 # Handle room disappereance when camera of room is deselected
 func hide_room():
-	print("Hiding room %s" % self.name)
 	for plushy in plushies_inside:
 		plushy.hide_all_sprites()
 

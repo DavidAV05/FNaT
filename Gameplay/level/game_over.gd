@@ -5,6 +5,7 @@ func _ready() -> void:
 	SignalBus.connect("game_over", _game_over)
 
 func _game_over() -> void:
+	print("Dood lol")
 	self.show()
 	Engine.time_scale = 0
 

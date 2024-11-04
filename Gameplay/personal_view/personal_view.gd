@@ -48,20 +48,6 @@ func _handle_cam_pan() -> void:
 			CAM.position[0] = RIGHT_BORDER - middle_of_screen[0]
 
 
-func _handle_switch_camera_view():
-	# Get size of visible viewport:
-	var visible_viewport_size = VIEWPORT.get_visible_rect().size
-	var visible_y_axis_len = visible_viewport_size[1]
-	
-	# Get mouse pos
-	var mouse_pos = VIEWPORT.get_mouse_position()
-	var mouse_y_pos = mouse_pos[1]
-	
-	var border_thresh = visible_y_axis_len * (CAMERA_VIEW_THRESH / 100)
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	_handle_cam_pan()
-	
-	_handle_switch_camera_view()

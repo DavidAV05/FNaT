@@ -1,13 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://bas1c1vtof3qt"]
+[gd_scene load_steps=5 format=3 uid="uid://bas1c1vtof3qt"]
 
 [ext_resource type="Script" path="res://Gameplay/plushies/plushy/plushy.gd" id="1_y4p1n"]
+[ext_resource type="PackedScene" uid="uid://b0m8h4ylseby" path="res://components/state_machine/state_machine.tscn" id="2_tiure"]
+[ext_resource type="Script" path="res://Gameplay/plushies/plushy/roaming.gd" id="3_ubh4r"]
+[ext_resource type="Script" path="res://Gameplay/plushies/plushy/stalking.gd" id="4_hseqm"]
 
 [node name="Plushy" type="Node2D"]
 z_index = 10
 script = ExtResource("1_y4p1n")
 
-[node name="ActionTimer" type="Timer" parent="."]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_tiure")]
+initial_state = NodePath("Roaming")
+
+[node name="Roaming" type="Node" parent="StateMachine"]
+script = ExtResource("3_ubh4r")
+
+[node name="ActionTimer" type="Timer" parent="StateMachine/Roaming"]
 wait_time = 4096.0
 one_shot = true
 
-[connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]
+[node name="Stalking" type="Node" parent="StateMachine"]
+script = ExtResource("4_hseqm")
+
+[node name="AttackTimer" type="Timer" parent="StateMachine/Stalking"]
+one_shot = true
+
+[node name="CuddleTimer" type="Timer" parent="StateMachine/Stalking"]
+one_shot = true
+
+[connection signal="timeout" from="StateMachine/Roaming/ActionTimer" to="StateMachine/Roaming" method="_on_action_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Stalking/AttackTimer" to="StateMachine/Stalking" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Stalking/CuddleTimer" to="StateMachine/Stalking" method="_on_cuddle_timer_timeout"]

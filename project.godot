@@ -33,6 +33,7 @@ folder_colors={
 "res://Gameplay/plushies/": "blue",
 "res://Gameplay/rooms/": "teal",
 "res://autoloads/": "green",
+"res://components/": "purple",
 "res://menus/": "red",
 "res://resources/": "pink"
 }

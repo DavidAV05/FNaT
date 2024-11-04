@@ -27,6 +27,13 @@ camera_view = NodePath("Camera2D/CameraView")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 
+[node name="GameOver" parent="Camera2D" instance=ExtResource("8_wtrxu")]
+z_index = 20
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+
 [node name="CameraView" parent="Camera2D" instance=ExtResource("2_vofb5")]
 offset_left = -576.0
 offset_top = -324.0
@@ -37,13 +44,6 @@ offset_bottom = -324.0
 
 [node name="Konijntje" parent="Camera2D/Plushies" node_paths=PackedStringArray("starting_room") instance=ExtResource("4_lvduf")]
 starting_room = NodePath("../../Rooms/LivingRoom")
-
-[node name="GameOver" parent="Camera2D" instance=ExtResource("8_wtrxu")]
-z_index = 20
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -576.0
-offset_bottom = -324.0
 
 [node name="Rooms" parent="Camera2D" instance=ExtResource("2_542b3")]
 position = Vector2(-576, -324)
