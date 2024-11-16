@@ -1,13 +1,11 @@
 class_name Plushy
 extends Node2D
 
-# Determine appearance
-@export_group("Appearance")
+## Determine appearance
 # For every room (key), different texture (value)
-@export var textures_dict: Dictionary = {}
 var all_sprites: Array[Sprite2D] = []
 
-# Determine aggresiveness of plushy
+## Determine aggresiveness of plushy
 @export_group("Aggresion")
 @export_range(1, 20) var aggression_level: int = 1
 @export_range(1, 5) var inherent_aggression: int = 1
@@ -49,14 +47,16 @@ func _ready() -> void:
 
 
 # Handle entering a new room
-func _enter_room(new_room: Room):
-	assert(new_room != null)
+func _enter_new_room() -> Room:
+	var new_room = current_room.accesible_rooms.pick_random()
 	# Signal old current room plushy left
 	current_room.emit_signal("plushy_left", self)
 	current_room = new_room
-	
+
 	# Signal new room plushy entered
 	new_room.emit_signal("plushy_entered", self)
+	
+	return new_room
 
 
 # Hides all sprites

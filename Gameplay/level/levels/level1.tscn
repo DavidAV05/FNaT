@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://vgh23w552f1k" path="res://Gameplay/rooms/rooms_control/rooms.tscn" id="2_542b3"]
 [ext_resource type="PackedScene" uid="uid://o4ojj6gsdknm" path="res://Gameplay/camera_view/camera_view.tscn" id="2_vofb5"]
 [ext_resource type="PackedScene" uid="uid://dldw61hdkvkbc" path="res://Gameplay/plushies/physical_plushies/konijntje.tscn" id="4_lvduf"]
-[ext_resource type="PackedScene" uid="uid://bsmoq6qg5p44n" path="res://Gameplay/rooms/physical_rooms/east_hallway.tscn" id="5_2qtrd"]
+[ext_resource type="PackedScene" uid="uid://bjctd2mniijyo" path="res://Gameplay/rooms/physical_rooms/east_hallway.tscn" id="5_2qtrd"]
 [ext_resource type="PackedScene" uid="uid://q15jgoxbqxsl" path="res://Gameplay/rooms/physical_rooms/bed_room.tscn" id="6_2ew1s"]
 [ext_resource type="PackedScene" uid="uid://oek7k54po2fi" path="res://Gameplay/rooms/physical_rooms/living_room.tscn" id="6_uf0k6"]
 [ext_resource type="PackedScene" uid="uid://dnbwjrvdxrnt8" path="res://Gameplay/rooms/physical_rooms/vent_room.tscn" id="7_ks1qo"]
@@ -51,14 +51,13 @@ position = Vector2(-576, -324)
 [node name="LivingRoom" parent="Camera2D/Rooms" node_paths=PackedStringArray("accesible_rooms") instance=ExtResource("6_uf0k6")]
 accesible_rooms = [NodePath("../EastHallway")]
 
-[node name="EastHallway" parent="Camera2D/Rooms" node_paths=PackedStringArray("accesible_rooms") instance=ExtResource("5_2qtrd")]
-accesible_rooms = [NodePath("../LivingRoom"), NodePath("../VentRoom")]
-
-[node name="BedRoom" parent="Camera2D/Rooms" node_paths=PackedStringArray("accesible_rooms") instance=ExtResource("6_2ew1s")]
-accesible_rooms = [NodePath("../EastHallway")]
+[node name="BedRoom" parent="Camera2D/Rooms" instance=ExtResource("6_2ew1s")]
 
 [node name="VentRoom" parent="Camera2D/Rooms" node_paths=PackedStringArray("accesible_rooms") instance=ExtResource("7_ks1qo")]
 accesible_rooms = [NodePath("../EastHallway")]
+
+[node name="EastHallway" parent="Camera2D/Rooms" node_paths=PackedStringArray("accesible_rooms") instance=ExtResource("5_2qtrd")]
+accesible_rooms = [NodePath("../LivingRoom"), NodePath("../VentRoom")]
 
 [node name="PersonalView" parent="." node_paths=PackedStringArray("CAM") instance=ExtResource("8_xxlsm")]
 CAM = NodePath("../Camera2D")

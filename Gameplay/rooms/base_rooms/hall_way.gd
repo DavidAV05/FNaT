@@ -1,6 +1,5 @@
 class_name Hallway
 extends Room
-
 var player_room: PlayerRoom = null
 
 var player_inside = false
