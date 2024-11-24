@@ -2,24 +2,31 @@ extends Node2D
 class_name Level
 
 
-@export_group("Game view")
+@export_group("Cameras view")
 @export var camera_view: CameraView = null
 
 @export_range(0, 30, 0.5) var flip_thresh_perc: float = 10
 var flip_border = 0
 var just_flipped = false
 
+@export_category("Game camera")
+@export var camera: GameCamera = null
+
+
 @onready var viewport_size = get_viewport().get_visible_rect().size
+
 
 var player_inside_room := false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	assert(camera_view != null)
+	assert(camera_view != null, "No camera view set")
+	assert(camera != null, "No camera set")
 	camera_view.hide()
 	flip_border = viewport_size[1] * (flip_thresh_perc / 100)
-	
+
+	# Set up signals
 	SignalBus.connect("player_entering", _update_player_location)
 	SignalBus.connect("player_leaving", _update_player_location)
 

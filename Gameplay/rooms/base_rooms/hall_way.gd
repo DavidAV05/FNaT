@@ -17,6 +17,8 @@ func _ready() -> void:
 func _on_player_entering(room_name: String):
 	if room_name != self.name:
 		return
+	
+	player_inside = true
 
 	self.show_room()
 
@@ -25,5 +27,7 @@ func _on_player_entering(room_name: String):
 func _on_player_leaving(room_name: String):
 	if room_name != self.name:
 		return
+	
+	player_inside = false
 
 	self.hide_room()
