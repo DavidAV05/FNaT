@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cw55rl8xj2ijc" path="res://Gameplay/level/game_over.tscn" id="8_wtrxu"]
 [ext_resource type="PackedScene" uid="uid://dobtiytagaakp" path="res://Gameplay/personal_view/personal_view.tscn" id="8_xxlsm"]
 [ext_resource type="Script" path="res://Gameplay/rooms/door/door.gd" id="10_sgbyu"]
-[ext_resource type="PackedScene" uid="uid://df48te2ktsnn5" path="res://Gameplay/level/game_camera.tscn" id="12_mdrj4"]
+[ext_resource type="PackedScene" path="res://Gameplay/level/game_camera.tscn" id="12_mdrj4"]
 
 [sub_resource type="Gradient" id="Gradient_liwb8"]
 colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1)

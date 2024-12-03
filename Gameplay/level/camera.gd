@@ -1,6 +1,6 @@
 class_name GameCamera
 extends Camera2D
-
+	
 
 @export_group("GameCamera")
 @export var left_border := 0 
@@ -9,15 +9,17 @@ extends Camera2D
 @export_range(0, 50) var pan_thresh := 10.0
 
 var viewport: Viewport = null
+var original_pos: Vector2 = self.position
 
 @onready var tween: Tween = null
-var tweening = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Set limits
 	self.limit_left = left_border
 	self.limit_right = right_border
+	self.limit_top = 0
+	self.limit_bottom = original_pos[1] * 2
 
 	pan_speed = (right_border / 1000) * pan_speed
 	
@@ -25,35 +27,21 @@ func _ready() -> void:
 
 
 # Zooms to given position with given duration
-func zoom_to_pos(pos: Vector2i, duration: float) -> void:
-	# Avoid tween interference
-	if tweening:
-		return
-
-	print("Zooming in to:", pos)
+func zoom_to_pos(zoom_strength: Vector2, pos: Vector2, duration: float) -> void:
+	# Disable panning of camera
 	set_process(false)
-	tweening = true
+	
+	# Creates tween for zoom and pos shift
 	tween = create_tween() 
 	tween.set_parallel(true)
-	tween.tween_property(self, "position", Vector2(1152, 258), duration)
-	tween.tween_property(self, "zoom", Vector2(4, 6), duration)
-	tweening = false
-	set_process(true)
+	tween.tween_property(self, "position", pos, duration)
+	tween.tween_property(self, "zoom", zoom_strength, duration)
+	
+	# Wait for tweens to finish
+	await tween.finished
+	await tween.finished
 
-
-# Resets zoom
-func reset_zoom(pos: Vector2, duration: float) -> void:
-	# Avoid tween interference
-	if tweening:
-		return
-
-	set_process(false)
-	tweening = true
-	tween = create_tween()
-	tween.set_parallel(true)
-	tween.tween_property(self, "position", Vector2(self.position[0], 324), duration)
-	tween.tween_property(self, "zoom", Vector2(1, 1), duration)
-	tweening = false
+	# Enable panning of camere
 	set_process(true)
 
 
