@@ -38,15 +38,14 @@ script = ExtResource("1_mdiil")
 MOTION_SCALE = 3.0
 
 [node name="Background" type="Sprite2D" parent="ParallaxBackdrop"]
-position = Vector2(576, 320)
-scale = Vector2(20, 12)
+position = Vector2(192, 112)
+scale = Vector2(6.625, 3.71)
 texture = SubResource("GradientTexture2D_546we")
 
 [node name="Midground" type="Sprite2D" parent="ParallaxBackdrop"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_484rc")
-position = Vector2(768, 384)
-scale = Vector2(2.88111, 2.88111)
+position = Vector2(280, 144)
 texture = ExtResource("4_bje3f")
 script = ExtResource("5_wqwt4")
 
@@ -54,26 +53,27 @@ script = ExtResource("5_wqwt4")
 modulate = Color(0.607843, 0.509804, 0.498039, 1)
 z_index = 1
 material = SubResource("ShaderMaterial_t6ivr")
-position = Vector2(576, 324)
-scale = Vector2(2.88, 2.88)
+position = Vector2(200, 112)
+scale = Vector2(1, 0.995556)
 texture = ExtResource("4_yslat")
 
 [node name="BunnyTheme" parent="." instance=ExtResource("8_nsgfw")]
+offset_top = 16.0
+offset_bottom = 40.0
 
 [node name="Start" type="Button" parent="BunnyTheme"]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 104.0
-offset_right = 384.0
-offset_bottom = 232.0
+offset_top = -8.0
+offset_right = 147.0
+offset_bottom = 64.0
 text = "Start Game"
 
 [node name="Quit" type="Button" parent="BunnyTheme"]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 360.0
-offset_right = 384.0
-offset_bottom = 488.0
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 144.0
+offset_bottom = 152.0
 text = "Quit"
 
 [connection signal="pressed" from="BunnyTheme/Start" to="." method="_on_start_pressed"]

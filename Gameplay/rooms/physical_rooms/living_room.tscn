@@ -1,13 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://oek7k54po2fi"]
+[gd_scene load_steps=5 format=3 uid="uid://oek7k54po2fi"]
 
 [ext_resource type="Script" path="res://Gameplay/rooms/base_rooms/room.gd" id="1_mgg6v"]
-[ext_resource type="Texture2D" uid="uid://dtno7mvsy3wni" path="res://Gameplay/rooms/room_textures/living_room.jpg" id="2_j8p68"]
+[ext_resource type="Texture2D" uid="uid://iamr23fvk751" path="res://Gameplay/rooms/room_textures/Livingroom.png" id="2_j3ofu"]
+[ext_resource type="Shader" path="res://resources/shaders/flashlight.gdshader" id="2_y4w71"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fhlpj"]
+shader = ExtResource("2_y4w71")
+shader_parameter/darkest_color = Color(0.156863, 0.0588235, 0.211765, 1)
+shader_parameter/dark_color = Color(1, 1, 1, 1)
+shader_parameter/center = Vector2(0.19, 0.495)
+shader_parameter/bright_radius = 0.05
+shader_parameter/dim_radius = 0.0
+shader_parameter/flicker_speed = 0.8
 
 [node name="LivingRoom" type="Node2D"]
 script = ExtResource("1_mgg6v")
 room_id = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
-scale = Vector2(0.6, 0.645418)
-texture = ExtResource("2_j8p68")
+material = SubResource("ShaderMaterial_fhlpj")
+position = Vector2(312, 112)
+texture = ExtResource("2_j3ofu")

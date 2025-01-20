@@ -22,6 +22,17 @@ func _ready() -> void:
 	plushy_left.connect(_plushy_left)
 
 
+func _physics_process(delta: float) -> void:
+	var mouse_pos = get_local_mouse_position()
+	var uniform_mouse_pos = mouse_pos / sprite.texture.get_size()
+	print(uniform_mouse_pos)
+
+	var sprite_material = sprite.material
+
+	if sprite_material:
+		sprite_material.set_shader_parameter("center", uniform_mouse_pos)
+	
+
 func _plushy_entered(new_plushy: Plushy):
 	# Add to bookkeeping
 	plushies_inside.append(new_plushy)

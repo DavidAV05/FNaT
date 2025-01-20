@@ -21,6 +21,8 @@ SignalBus="*res://autoloads/signal_bus.gd"
 
 [display]
 
+window/size/viewport_width=400
+window/size/viewport_height=225
 window/stretch/mode="viewport"
 
 [file_customization]
