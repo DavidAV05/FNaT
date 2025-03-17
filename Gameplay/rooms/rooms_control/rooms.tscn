@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://vgh23w552f1k"]
-
-[ext_resource type="Script" path="res://Gameplay/rooms/rooms_control/rooms.gd" id="1_oku3b"]
-
-[node name="Rooms" type="Node2D"]
-z_index = 5
-script = ExtResource("1_oku3b")
