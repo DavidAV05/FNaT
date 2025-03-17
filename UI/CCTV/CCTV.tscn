@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwso5dpru2s8g"]
+
+[ext_resource type="Theme" uid="uid://ndmnvbo3n7xm" path="res://UI/CCTV/CCTV.tres" id="1_6knnt"]
+
+[node name="Cctv" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme = ExtResource("1_6knnt")
+
+[node name="Container" type="MarginContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 400.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Container/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Rooms"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Container/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Room 2"
+
+[node name="Button2" type="Button" parent="Container/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Room 1"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Container/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Container/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Room 3"
+
+[node name="Button2" type="Button" parent="Container/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Room 4
+"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Container/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Container/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Room 5
+"
+
+[node name="Button2" type="Button" parent="Container/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Room 6
+"

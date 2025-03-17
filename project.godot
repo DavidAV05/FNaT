@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FNaT"
-run/main_scene="res://menus/main_menu/main_menu.tscn"
+run/main_scene="uid://dwso5dpru2s8g"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -24,6 +24,10 @@ SignalBus="*res://autoloads/signal_bus.gd"
 window/size/viewport_width=400
 window/size/viewport_height=225
 window/stretch/mode="viewport"
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 
