@@ -1,27 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwso5dpru2s8g"]
+[gd_scene load_steps=6 format=3 uid="uid://dwso5dpru2s8g"]
 
 [ext_resource type="Theme" uid="uid://ndmnvbo3n7xm" path="res://UI/CCTV/CCTV.tres" id="1_6knnt"]
+[ext_resource type="Shader" uid="uid://b4wn8p5nhcrwm" path="res://UI/CCTV/dither.gdshader" id="2_gu3sv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gu3sv"]
+shader = ExtResource("2_gu3sv")
+shader_parameter/levels = 0
+shader_parameter/threshold = 0.0
+shader_parameter/colors = 0
+shader_parameter/pixelate = 0
+
+[sub_resource type="Gradient" id="Gradient_mswtu"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8c8ps"]
+gradient = SubResource("Gradient_mswtu")
+fill_from = Vector2(0, 0.6)
+metadata/_snap_enabled = true
 
 [node name="Cctv" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.00046, 0.987668)
 size_flags_vertical = 0
 theme = ExtResource("1_6knnt")
 
 [node name="Container" type="MarginContainer" parent="."]
 clip_contents = true
 custom_minimum_size = Vector2(10, 10)
-layout_mode = 2
-offset_left = 256.0
-offset_top = 128.0
-offset_right = 400.0
-offset_bottom = 225.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -110.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Container"]
 layout_mode = 2
@@ -31,8 +51,20 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Container/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Container/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Container/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Container/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+material = SubResource("ShaderMaterial_gu3sv")
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("GradientTexture2D_8c8ps")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Container/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 text = "Rooms"
 

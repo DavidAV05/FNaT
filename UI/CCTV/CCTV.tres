@@ -1,7 +1,14 @@
-[gd_resource type="Theme" format=3 uid="uid://ndmnvbo3n7xm"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ndmnvbo3n7xm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbork"]
+border_width_left = 2
+border_width_bottom = 2
+border_color = Color(0.800436, 0.819076, 0.644036, 1)
+anti_aliasing = false
 
 [resource]
 Button/font_sizes/font_size = 10
+Button/styles/normal = SubResource("StyleBoxFlat_mbork")
 MarginContainer/constants/margin_bottom = 5
 MarginContainer/constants/margin_left = 5
 MarginContainer/constants/margin_right = 5
