@@ -1,4 +1,3 @@
-class_name StateMachine
 extends Node
 
 var _prefs = {

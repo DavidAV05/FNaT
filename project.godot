@@ -12,7 +12,7 @@ config_version=5
 
 config/name="FNaT"
 run/main_scene="uid://dwso5dpru2s8g"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -24,6 +24,14 @@ SignalBus="*res://autoloads/signal_bus.gd"
 window/size/viewport_width=400
 window/size/viewport_height=225
 window/stretch/mode="viewport"
+
+[dotnet]
+
+project/assembly_name="FNaT"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/SimpleFormatOnSave/plugin.cfg")
 
 [gui]
 
