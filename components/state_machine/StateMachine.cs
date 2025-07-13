@@ -9,9 +9,9 @@ public partial class StateMachine : Node
 {
     // Export vars
     [Export]
-    private State startState = null;
+    private State InitialState = null;
 
-    private State currentState = null;
+    public State CurrentState { get; set; } = null;
 
     private readonly Dictionary<string, State> states = [];
 
@@ -22,70 +22,93 @@ public partial class StateMachine : Node
     {
         foreach (var child in this.GetChildren(false))
         {
-            if (child is State)
+            if (child is State state)
             {
-                states.Add((string)child.Name, (State)child);
+                string name = state.Name.ToString().ToLower();
+                states.Add(name, (State)child);
+                state.Transition += onStateTransition;
             }
         }
 
         // Start first state
-        Debug.Assert(startState != null);
-        startState.Start();
-
-
+        Debug.Assert(InitialState != null);
+        InitialState.Start();
+        CurrentState = InitialState;
     }
 
     public override void _Process(double delta)
     {
-        this.GetChildren(false);
+        CurrentState?.Update(delta);
     }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        CurrentState?.PhysicsUpdate(delta);
+    }
+
 
     /// <summary>
     /// Set machine's state to given states name.
     /// </summary>
-    /// <param name="stateName"> String of the state to set machine to.</param>
-    public void SetState(string stateName)
+    /// <param name="source"> Source of state calling this function. </param>
+    /// <param name="newStateName"> String of the state to set machine to.</param>
+    public void onStateTransition(State source, string newStateName)
     {
-        // Initialise new state to null
-        State newState;
-
-        // Try to get new given state
-        try
-        {
-            newState = states[stateName];
-        }
-        // If state is not part of states list
-        catch (Exception)
+        // Check if calling state truly is current state
+        if (source != CurrentState)
         {
             GD.Print(
-                "{0}: State {1} was not found within states list", this.Name,
-                stateName
+                "{0}: State {1} was not the current state", this.Name,
+                newStateName
                 );
             return;
         }
 
-        // Stop old state
-        bool result = GetState().Stop();
+        // To lower to avoid confusion
+        newStateName = newStateName.ToLower();
 
-        if (!result)
+        // Check if new state isn't current state already
+        if (newStateName == CurrentState.Name)
         {
-            GD.Print("{0}: Error while stopping state: {1}", this.Name,
-                stateName);
+            GD.Print(
+                "{0}: State {1} was already current state", this.Name,
+                newStateName
+                );
             return;
         }
 
+        // Check if requested state is part of machine
+        if (!states.ContainsKey(newStateName))
+        {
+            GD.Print(
+                "{0}: State {1} was not found within states list", this.Name,
+                newStateName
+                );
+            return;
+        }
+
+        // Initialise new state to null
+        State newState = states[newStateName];
+
+
+        // Stop old state
+        bool result = CurrentState.Stop();
+
+        if (!result)
+        {
+            GD.Print(
+                "{0}: Error while stopping state: {1}",
+                this.Name, newStateName
+                );
+            throw new Exception("Error stopping current state");
+        }
+
         // Rename current state
-        this.currentState = newState;
+        this.CurrentState = newState;
 
         // Start new state
         newState.Start();
 
         return;
-    }
-
-
-    public State GetState()
-    {
-        return currentState;
     }
 }
